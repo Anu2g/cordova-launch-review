@@ -49,7 +49,7 @@
     
     @try {
         CDVPluginResult* pluginResult;
-#if defined(__IPHONE_10_3) && __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_10_3
+#if defined(__IPHONE_10_3) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_3
         [SKStoreReviewController requestReview];
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
 #else
