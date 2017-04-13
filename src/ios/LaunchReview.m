@@ -46,14 +46,15 @@
 
 - (void) rating:(CDVInvokedUrlCommand*)command;
 {
+    
     @try {
         CDVPluginResult* pluginResult;
-        
 #if defined(__IPHONE_10_3) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_3
         [SKStoreReviewController requestReview];
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
 #else
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Rating dialog requires iOS 10.3+"];
+        NSString *errorMessage = [NSString stringWithFormat: @"Rating dialog requires iOS 10.3+. Device Version = %d, iPhone 10.3 Version ID = %d", __IPHONE_OS_VERSION_MAX_ALLOWED, __IPHONE_10_3 ];
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:errorMessage];
 #endif
         
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
