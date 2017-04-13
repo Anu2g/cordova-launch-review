@@ -53,7 +53,7 @@
         [SKStoreReviewController requestReview];
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
 #else
-        NSString *errorMessage = [NSString stringWithFormat: @"Rating dialog requires iOS 10.3+. Device Version = %d", __IPHONE_OS_VERSION_MAX_ALLOWED ];
+        NSString *errorMessage = [NSString stringWithFormat: @"Rating dialog requires iOS 10.3+. Device Version = %d, iPhone 10.3 Version ID = %d", __IPHONE_OS_VERSION_MAX_ALLOWED, __IPHONE_10_3 ];
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:errorMessage];
 #endif
         
